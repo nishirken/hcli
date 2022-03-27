@@ -2,3 +2,18 @@ cradle:
   cabal:
     - path: "app/Main.hs"
       component: "hcli:exe:hcli"
+
+    - path: "app/Operations.hs"
+      component: "hcli:exe:hcli"
+
+    - path: "app/CabalFileOperations.hs"
+      component: "hcli:exe:hcli"
+
+    - path: "app/Common.hs"
+      component: "hcli:exe:hcli"
+
+    - path: "app/Cli.hs"
+      component: "hcli:exe:hcli"
+
+    - path: "tests"
+      component: "hcli:test:hcli-test"
