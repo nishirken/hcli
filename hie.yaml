@@ -17,3 +17,6 @@ cradle:
 
     - path: "tests"
       component: "hcli:test:hcli-test"
+
+    - path: "app"
+      component: "hcli:test:hcli-test"

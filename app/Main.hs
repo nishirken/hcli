@@ -37,4 +37,3 @@ main = do
     Cli.command "add-test" $ do
       Cli.action $ \toParam -> do
         addTestModule cabalFile baseTestDir $ fromMaybe (ModuleName defaultModuleName) $ toParam moduleName
-

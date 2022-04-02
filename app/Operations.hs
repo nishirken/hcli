@@ -4,18 +4,18 @@ module Operations (addExeModule, addTestModule) where
 
 import CabalFileOperations (addExecutableModule, addTestSuiteModule)
 import Common (FilePath (..), ModuleName (..))
+import Control.Monad (when)
 import qualified Data.Text as T
+import Distribution.ModuleName (fromString, toFilePath)
 import qualified Shelly as Sh
 import System.FilePath (addExtension, dropFileName, (</>))
 import Prelude hiding (FilePath)
-import Control.Monad (when)
-import Distribution.ModuleName (toFilePath, fromString)
 
 mkModule :: ModuleName -> T.Text -> Sh.Sh ()
 mkModule (ModuleName modulePath) moduleHeader = do
-    let dir = dropFileName modulePath
-    when (dir /= "./") $ Sh.bash_ "mkdir -p" [T.pack dir]
-    Sh.writefile modulePath moduleHeader
+  let dir = dropFileName modulePath
+  when (dir /= "./") $ Sh.bash_ "mkdir -p" [T.pack dir]
+  Sh.writefile modulePath moduleHeader
 
 mkHsModule :: FilePath -> ModuleName -> IO ()
 mkHsModule (FilePath baseDir) mn@(ModuleName moduleName) = Sh.shelly $ do
