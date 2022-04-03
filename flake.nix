@@ -17,7 +17,16 @@
               src = ./.;
               compiler-nix-name = "ghc8107";
               modules = [{
-                reinstallableLibGhc = true;
+                # reinstall only cabal, exclude it from ghc reinstall
+                nonReinstallablePkgs =
+                  [ "rts" "ghc-heap" "ghc-prim" "integer-gmp" "integer-simple" "base"
+                    "deepseq" "array" "ghc-boot-th" "pretty" "template-haskell"
+                    "ghcjs-prim" "ghcjs-th" "ghc-boot"
+                    "ghc" "Win32" "array" "binary" "bytestring" "containers"
+                    "directory" "filepath" "ghc-boot" "ghc-compact" "ghc-prim"
+                    "hpc" "mtl" "parsec" "process" "text" "time" "transformers"
+                    "unix" "xhtml" "terminfo"
+                  ];
               }];
               shell = {
                 tools = {
@@ -26,7 +35,7 @@
                   haskell-language-server = "latest";
                   ormolu = "0.1.4.1";
                 };
-                buildInputs = [pkgs.haskellPackages.implicit-hie pkgs.gcc];
+                buildInputs = [pkgs.haskellPackages.implicit-hie];
                 withHoogle = true;
               };
             };
@@ -36,6 +45,6 @@
       flake = pkgs.${packageName}.flake {};
     in flake // {
       # Built by `nix build .`
-      defaultPackage = flake.packages."${packageName}:exe:${packageName}";
+      defaultPackage = flake.packages."${packageName}:exe:${packageName}-exe";
     });
 }

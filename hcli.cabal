@@ -5,7 +5,7 @@ maintainer:         dmitrii.sk@gmail.com
 author:             Dmitrii Skurihin
 extra-source-files: CHANGELOG.md
 
-executable hcli
+executable hcli-exe
     main-is:          Main.hs
     hs-source-dirs:   app
     other-modules:
@@ -16,12 +16,12 @@ executable hcli
 
     default-language: Haskell2010
     build-depends:
-        base ^>=4.14.1.0,
+        base,
         Cabal,
         cabal-install-parsers,
-        shelly ^>=1.10.0,
+        shelly,
         filepath,
-        cli ^>=0.2.0,
+        cli,
         text,
         regex-compat
 
@@ -39,4 +39,4 @@ test-suite hcli-test
         cli,
         regex-compat,
         text,
-        -- hspec
+        hspec
