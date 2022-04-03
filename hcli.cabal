@@ -5,7 +5,7 @@ maintainer:         dmitrii.sk@gmail.com
 author:             Dmitrii Skurihin
 extra-source-files: CHANGELOG.md
 
-executable hcli-exe
+executable hcli
     main-is:          Main.hs
     hs-source-dirs:   app
     other-modules:

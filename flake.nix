@@ -45,6 +45,6 @@
       flake = pkgs.${packageName}.flake {};
     in flake // {
       # Built by `nix build .`
-      defaultPackage = flake.packages."${packageName}:exe:${packageName}-exe";
+      defaultPackage = flake.packages."${packageName}:exe:${packageName}";
     });
 }
